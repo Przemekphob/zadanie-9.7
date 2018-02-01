@@ -1,19 +1,13 @@
 var newGameBtn = document.getElementById('js-newGameButton');
 newGameBtn.addEventListener('click', newGame);
 
-var pickRock = document.getElementById('js-playerPick_rock'),
-  pickPaper = document.getElementById('js-playerPick_paper'),
-  pickScissors = document.getElementById('js-playerPick_scissors');
+var picker = document.getElementsByClassName('picker');
 
-pickRock.addEventListener('click', function() {
-  playerPick('rock')
-});
-pickPaper.addEventListener('click', function() {
-  playerPick('paper')
-});
-pickScissors.addEventListener('click', function() {
-  playerPick('scissors')
-});
+for (var i = 0; i < picker.length; i++) {
+    picker[i].addEventListener('click', function() {
+      playerPick(this.getAttribute('data-choice'));
+    }, false);
+}
 
 var gameState = 'default',
   player = {
